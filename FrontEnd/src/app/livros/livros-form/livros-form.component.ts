@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LivrosService } from 'src/app/livros.service';
+import { Livro } from '../livros';
 
 @Component({
   selector: 'app-livros-form',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LivrosFormComponent implements OnInit {
 
-  constructor() { }
+  livro: Livro;
+  sucesso: Boolean = false;
+  errosApi: String[];
+  
+  constructor( private service: LivrosService ) {
+    this.livro = new Livro();
+  }
 
   ngOnInit(): void {
   }
 
+  gravarLivro(){
+    console.log('this.livro');
+    this.service
+      .salvar(this.livro)
+      .subscribe(response => {
+        this.sucesso = true;
+        this.errosApi = null;
+        this.livro = response;
+      }, errorResponse => {
+        this.errosApi = errorResponse.error.erros;
+        this.sucesso = false;
+        
+      })
+  }
 }

@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LivrosFormComponent } from './livros-form/livros-form.component';
-import { LivrosListComponent } from './livros-list/livros-list.component';
+import { FormsModule } from '@angular/forms';
 
+import { LivrosRoutingModule } from './livros-routing.module';
+import { LivrosFormComponent } from './livros-form/livros-form.component';
 
 
 @NgModule({
   declarations: [
-    LivrosFormComponent,
-    LivrosListComponent
+    LivrosFormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    LivrosRoutingModule,
+    FormsModule
+  ],
+  exports: [
+    LivrosFormComponent
   ]
 })
 export class LivrosModule { }
