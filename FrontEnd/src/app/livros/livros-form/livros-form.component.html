@@ -4,26 +4,73 @@
 </ol>
 
 <div class="container">
-    <form>
+    <form #livroForm="ngForm" (ngSubmit)="onClickSalvar()">
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Id:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" disabled=true [(ngModel)]="livro.id" name="id">
                 </div>
             </div>
 
             <div class="col-md-9">
                 <div class="form-group">
                     <label>Título:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="livro.titulo" name="titulo">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-7">
+                <div class="form-group">
+                    <label>Autor:</label>
+                    <input type="text" class="form-control" [(ngModel)]="livro.autor" name="autor">
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label>Editora:</label>
+                    <input type="text" class="form-control" [(ngModel)]="livro.editora" name="editora">
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-3">
-                <button type="submit" class="btn btn-primary">
+                <div class="form-group">
+                    <label>Gênero:</label>
+                    <input type="text" class="form-control" [(ngModel)]="livro.genero" name="genero">
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Número de Páginas:</label>
+                    <input type="text" class="form-control" [(ngModel)]="livro.numeroPaginas" name="numeroPaginas">
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Ano de Publicação:</label>
+                    <input type="text" class="form-control" [(ngModel)]="livro.anoPublicacao" name="anoPublicacao">
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Idioma:</label>
+                    <input type="text" class="form-control" [(ngModel)]="livro.idioma" name="idioma">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-success">
                     <i class="fa fa-save"></i>
                     Salvar
                 </button>

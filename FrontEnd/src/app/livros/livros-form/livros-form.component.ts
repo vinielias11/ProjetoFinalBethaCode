@@ -23,6 +23,11 @@ export class LivrosFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+  }
+
+  onClickSalvar() {
+    console.log('Teste save')
   }
 
 }
