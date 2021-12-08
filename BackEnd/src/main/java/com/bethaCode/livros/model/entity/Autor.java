@@ -14,7 +14,7 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotEmpty(message = "O nome não pode ser vazio!")
+    @NotEmpty(message = "O campo nome é obrigatório!")
     @Column(nullable = false, length = 100)
     private String nome;
 }

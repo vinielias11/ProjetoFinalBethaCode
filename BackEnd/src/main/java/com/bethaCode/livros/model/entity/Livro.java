@@ -15,17 +15,33 @@ public class Livro {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotEmpty(message = "O nome não pode ser vazio!")
+    @NotEmpty(message = "O campo título é obrigatório.")
     @Column(nullable = false, length = 100)
-    private String nome;
+    private String titulo;
+
+    @NotEmpty(message = "O campo número de páginas é obrigatório.")
+    @Column(nullable = false, length = 5)
+    private Integer numeroPaginas;
+
+    @NotEmpty(message = "O campo ano de publicação é obrigatório.")
+    @Column(nullable = false, length = 4)
+    private Integer anoPublicacao;
+
+    @NotEmpty(message = "O campo gênero é obrigatório.")
+    @Column(nullable = false, length = 20)
+    private String genero;
+
+    @NotEmpty(message = "O campo idioma é obrigatório.")
+    @Column(nullable = false, length = 15)
+    private String idioma;
 
     @ManyToOne
-    @NotNull(message = "O autor não pode ser nulo!")
+    @NotEmpty(message = "O campo autor é obrigatório.")
     @JoinColumn(name = "id_autor")
     private Autor autor;
 
     @ManyToOne
-    @NotNull(message = "A editora não pode ser nula!")
+    @NotEmpty(message = "O campo editora é obrigatório.")
     @JoinColumn(name = "id_editora")
     private Editora editora;
 }

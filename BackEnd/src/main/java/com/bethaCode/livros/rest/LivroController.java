@@ -32,16 +32,16 @@ public class LivroController {
         Editora editora = editoraRepository
                             .findById(idEditora)
                             .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                                          "A editora " +idEditora+ " não existe na aplicação!"));
+                                          "A editora " + idEditora + " não existe na aplicação!"));
 
         Integer idAutor = livroDTO.getIdAutor();
         Autor autor = autorRepository
                             .findById(idAutor)
                             .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                                            "O autor " +idAutor+ " não existe na aplicação!"));
+                                            "O autor " + idAutor + " não existe na aplicação!"));
 
         Livro livro = new Livro();
-        livro.setNome(livroDTO.getNome());
+        livro.setTitulo(livroDTO.getTitulo());
         livro.setAutor(autor);
         livro.setEditora(editora);
 
@@ -53,7 +53,7 @@ public class LivroController {
         return livroRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                                                "Livro " +id+ " não cadastrado!"));
+                                                "Livro " + id + " não cadastrado!"));
     }
 
     @GetMapping
@@ -73,7 +73,7 @@ public class LivroController {
                     return Void.TYPE;
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                                                "Livro " +id+ " não cadastrado!"));
+                                                "Livro " + id + " não cadastrado!"));
     }
 
     @PutMapping("{id}")
@@ -84,23 +84,23 @@ public class LivroController {
         Editora editora = editoraRepository
                             .findById(idEditora)
                             .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                                                "A editora " +idEditora+ " não existe na aplicação!"));
+                                                "A editora " + idEditora + " não existe na aplicação!"));
 
         Integer idAutor = livroAtualizado.getIdAutor();
         Autor autor = autorRepository
                             .findById(idAutor)
                             .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                                                "O autor " +idAutor+ " não existe na aplicação!"));
+                                                "O autor " + idAutor + " não existe na aplicação!"));
 
         livroRepository
                 .findById(id)
                 .map(livro -> {
-                    livro.setNome(livroAtualizado.getNome());
+                    livro.setTitulo(livroAtualizado.getTitulo());
                     livro.setAutor(autor);
                     livro.setEditora(editora);
                     return livroRepository.save(livro);
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                                                "Livro " +id+ " não cadastrado!"));
+                                                "Livro " + id + " não cadastrado!"));
     }
 }
