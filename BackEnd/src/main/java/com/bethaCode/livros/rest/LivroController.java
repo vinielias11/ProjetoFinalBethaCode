@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/livro")
+@RequestMapping("api/livros")
 @RequiredArgsConstructor
 public class LivroController {
 
