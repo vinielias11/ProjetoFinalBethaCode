@@ -1,4 +1,4 @@
-# ProjetoFinalBethaCode
+# Projeto Final Betha Code
 Repositório para o projeto final do curso Betha Code 2021.
 
 # Instruções gerais:
