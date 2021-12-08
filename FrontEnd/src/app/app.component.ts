@@ -8,7 +8,7 @@ import jQuery from 'jquery'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
-  title = 'clientes-app';
+  title = 'projeto-livros-app';
 
   ngAfterViewInit(){
     (function($) {
