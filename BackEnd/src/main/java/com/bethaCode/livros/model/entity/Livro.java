@@ -20,11 +20,11 @@ public class Livro {
     private String titulo;
 
     @NotEmpty(message = "O campo número de páginas é obrigatório.")
-    @Column(nullable = false, length = 5)
+    @Column(name = "numero_paginas", nullable = false, length = 5)
     private Integer numeroPaginas;
 
     @NotEmpty(message = "O campo ano de publicação é obrigatório.")
-    @Column(nullable = false, length = 4)
+    @Column(name = "ano_publicacao", nullable = false, length = 4)
     private Integer anoPublicacao;
 
     @NotEmpty(message = "O campo gênero é obrigatório.")
