@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("api/editora")
+@CrossOrigin("http://localhost:4200")
 public class EditoraController {
 
     private final EditoraRepository repository;

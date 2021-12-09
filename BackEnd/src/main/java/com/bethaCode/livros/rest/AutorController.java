@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("api/autor")
+@CrossOrigin("http://localhost:4200")
 public class AutorController {
 
     private final AutorRepository repository;
