@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LivrosService } from 'src/app/livros.service';
 import { Livro } from '../livro';
 
 @Component({
@@ -10,16 +11,8 @@ export class LivrosFormComponent implements OnInit {
 
   livro: Livro;
 
-  constructor() { 
+  constructor( private service: LivrosService ) { 
     this.livro = new Livro();
-    this.livro.id = 1;
-    this.livro.titulo = 'Brave New World';
-    this.livro.numeroPaginas = 272; 
-    this.livro.autor = 'Aldous Huxley';
-    this.livro.editora = 'Leya';
-    this.livro.anoPublicacao = '1932';
-    this.livro.genero = 'Distopia';
-    this.livro.idioma = 'Inglês';
   }
 
   ngOnInit(): void {
@@ -27,7 +20,12 @@ export class LivrosFormComponent implements OnInit {
   }
 
   onClickSalvar() {
-    console.log('Teste save')
+    console.log(this.livro);
+    this.service
+      .salvar(this.livro)
+      .subscribe(resp => {
+        console.log(resp);
+      })
   }
 
 }
