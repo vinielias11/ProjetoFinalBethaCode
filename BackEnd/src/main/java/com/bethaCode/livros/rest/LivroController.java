@@ -43,6 +43,10 @@ public class LivroController {
 
         Livro livro = new Livro();
         livro.setTitulo(livroDTO.getTitulo());
+        livro.setNumeroPaginas(livroDTO.getNumeroPaginas());
+        livro.setAnoPublicacao(livroDTO.getAnoPublicacao());
+        livro.setGenero(livroDTO.getGenero());
+        livro.setIdioma(livroDTO.getIdioma());
         livro.setAutor(autor);
         livro.setEditora(editora);
 
@@ -93,10 +97,22 @@ public class LivroController {
                             .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
                                                 "O autor " + idAutor + " não existe na aplicação!"));
 
+        /*private String titulo;
+        private Integer numeroPaginas;
+        private Integer anoPublicacao;
+        private String genero;
+        private String idioma;
+        private Integer idAutor;
+        private Integer idEditora; */
+
         livroRepository
                 .findById(id)
                 .map(livro -> {
                     livro.setTitulo(livroAtualizado.getTitulo());
+                    livro.setNumeroPaginas(livroAtualizado.getNumeroPaginas());
+                    livro.setAnoPublicacao(livroAtualizado.getAnoPublicacao());
+                    livro.setGenero(livroAtualizado.getGenero());
+                    livro.setIdioma(livroAtualizado.getIdioma());
                     livro.setAutor(autor);
                     livro.setEditora(editora);
                     return livroRepository.save(livro);

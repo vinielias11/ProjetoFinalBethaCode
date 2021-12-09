@@ -19,11 +19,11 @@ public class Livro {
     @Column(nullable = false, length = 100)
     private String titulo;
 
-    @NotEmpty(message = "O campo número de páginas é obrigatório.")
+    @NotNull(message = "O campo número de páginas é obrigatório.")
     @Column(name = "numero_paginas", nullable = false, length = 5)
     private Integer numeroPaginas;
 
-    @NotEmpty(message = "O campo ano de publicação é obrigatório.")
+    @NotNull(message = "O campo ano de publicação é obrigatório.")
     @Column(name = "ano_publicacao", nullable = false, length = 4)
     private Integer anoPublicacao;
 
@@ -36,12 +36,12 @@ public class Livro {
     private String idioma;
 
     @ManyToOne
-    @NotEmpty(message = "O campo autor é obrigatório.")
+    @NotNull(message = "O campo autor é obrigatório.")
     @JoinColumn(name = "id_autor")
     private Autor autor;
 
     @ManyToOne
-    @NotEmpty(message = "O campo editora é obrigatório.")
+    @NotNull(message = "O campo editora é obrigatório.")
     @JoinColumn(name = "id_editora")
     private Editora editora;
 }

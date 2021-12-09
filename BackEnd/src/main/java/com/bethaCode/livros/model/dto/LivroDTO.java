@@ -7,6 +7,10 @@ import lombok.Setter;
 public class LivroDTO {
 
     private String titulo;
+    private Integer numeroPaginas;
+    private Integer anoPublicacao;
+    private String genero;
+    private String idioma;
     private Integer idAutor;
     private Integer idEditora;
 
