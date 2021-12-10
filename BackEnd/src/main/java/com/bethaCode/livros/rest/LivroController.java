@@ -66,12 +66,12 @@ public class LivroController {
                                                 "Livro " + id + " não cadastrado!"));
     }
 
-    @GetMapping
-    public List<Livro> pesquisar(
-            @RequestParam(value = "nome", required = false, defaultValue = "") String nomeDoAutor){
-
-        return livroRepository.acharAutorPorNome("%" + nomeDoAutor + "%");
-    }
+//    @GetMapping
+//    public List<Livro> pesquisar(
+//            @RequestParam(value = "nome", required = false, defaultValue = "") String nomeDoAutor){
+//
+//        return livroRepository.acharAutorPorNome("%" + nomeDoAutor + "%");
+//    }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

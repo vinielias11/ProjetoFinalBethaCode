@@ -5,6 +5,7 @@ import { LivrosListComponent } from './livros-list/livros-list.component';
 
 const routes: Routes = [
   { path: 'livrosForm', component: LivrosFormComponent },
+  { path: 'livrosForm/:id', component: LivrosFormComponent },
   { path: 'livrosList', component: LivrosListComponent }
 ];
 

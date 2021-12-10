@@ -1,14 +1,14 @@
 <h1 class="mt-4">Livros</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Cadastro</li>
+    <li class="breadcrumb-item active">{{ livro.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 
-<div class="container">
+<div class="container float-left">
     <form #livroForm="ngForm" (ngSubmit)="onClickSalvar()">
 
         <div class="row">
             <div class="col-md-12">
-                
+
                 <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
                     Aluno salvo/atualizado com sucesso!
                 </div>
@@ -84,10 +84,20 @@
         </div>
 
         <div class="row">
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-success">
+            <div class="col-md-4">
+                <button type="button" class="btn btn-danger mr-1" (click)="onClickVoltar()">
+                    <i class="fa fa-arrow-alt-circle-left"></i>
+                    Voltar
+                </button>
+
+                <button type="submit" class="btn btn-success" *ngIf="!livro.id">
                     <i class="fa fa-save"></i>
                     Salvar
+                </button>
+
+                <button type="submit" class="btn btn-success" *ngIf="livro.id">
+                    <i class="fa fa-sync-alt"></i>
+                    Atualizar
                 </button>
             </div>
         </div>
