@@ -36,7 +36,6 @@ export class LivrosFormComponent implements OnInit {
   }
 
   onClickSalvar() {
-
     if (this.id) {
       this.service.atualizar(this.livro).subscribe(success => {
         this.sucesso = true;

@@ -1,0 +1,84 @@
+<h1 class="mt-4">Livros</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Lista</li>
+</ol>
+
+<div class="container float-left">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                {{ mensagemSucesso }}
+            </div>
+            
+            <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
+                {{ mensagemErro }}
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <table class="table table condensed table-hover">
+                
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Nacionalidade</th>
+                        <th>Data de Nascimento</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr *ngFor="let autor of autores">
+                        <td class="align-middle">{{ autor.id }}</td>
+                        <td class="align-middle">{{ autor.nome }}</td>
+                        <td class="align-middle">{{ autor.nacionalidade }}</td>
+                        <td class="align-middle">{{ autor.dataNascimento }}</td>
+                        <td>
+                            <button class="btn btn-primary" routerLink="/autoresForm/{{ autor.id }}">
+                                <i class="fa fa-pen-square"></i>
+                            </button>
+
+                            <button class="btn btn-danger ml-2" (click)="preparaExclusao(autor)" data-toggle="modal" data-target="#modalSelecao">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <div class="row">
+                <button class="btn btn-success ml-3" (click)="onClickNovo()">
+                    <i class="fa fa-plus mr-1"></i>Novo
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="modalSelecao" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Confirmação</h4>
+                </div>
+
+                <div class="modal-body" *ngIf="autorSelecionado">
+                    Confirma a exclusão do autor {{ autorSelecionado.nome }}?
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-success" (click)="deletaAutor()" data-dismiss="modal">Confirmar</button>
+                    <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</div>

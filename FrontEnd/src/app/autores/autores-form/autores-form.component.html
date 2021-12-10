@@ -6,11 +6,11 @@
 <div class="container float-left">
     <form #livroForm="ngForm" (ngSubmit)="onClickSalvar()">
 
-        <!-- <div class="row">
+        <div class="row">
             <div class="col-md-12">
 
                 <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
-                    Aluno salvo/atualizado com sucesso!
+                    Autor salvo/atualizado com sucesso!
                 </div>
 
                 <div class="alert alert-danger" role="alert" *ngFor="let erro of errosApi">
@@ -18,7 +18,7 @@
                 </div>
 
             </div>
-        </div> -->
+        </div>
 
         <div class="row">
             <div class="col-md-3">
@@ -47,7 +47,7 @@
             <div class="col-md-5">
                 <div class="form-group">
                     <label>Data de Nascimento:</label>
-                    <input type="date" class="form-control" [(ngModel)]="autor.dataNascimento" name="dataNascimento">
+                    <input type="text" class="form-control" [(ngModel)]="autor.dataNascimento" name="dataNascimento">
                 </div>
             </div>
         </div>

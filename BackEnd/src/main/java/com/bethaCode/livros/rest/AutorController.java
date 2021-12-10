@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/autores")
@@ -33,6 +34,11 @@ public class AutorController {
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                                                 "Autor " +id+ " não cadastrado!"));
+    }
+
+    @GetMapping
+    public List<Autor> listarTodos() {
+        return repository.findAll();
     }
 
     @DeleteMapping("{id}")
