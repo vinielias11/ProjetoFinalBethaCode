@@ -10,25 +10,25 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("api/autor")
+@RequestMapping("api/autores")
 @CrossOrigin("http://localhost:4200")
 public class AutorController {
 
     private final AutorRepository repository;
 
     @Autowired
-    public AutorController(AutorRepository repository){
+    public AutorController(AutorRepository repository) {
         this.repository = repository;
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Autor salvar(@Valid @RequestBody Autor autor){
+    public Autor salvar(@Valid @RequestBody Autor autor) {
         return repository.save(autor);
     }
 
     @GetMapping("{id}")
-    public Autor acharPorId(@PathVariable Integer id){
+    public Autor acharPorId(@PathVariable Integer id) {
         return repository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
@@ -37,7 +37,7 @@ public class AutorController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletar(@PathVariable Integer id){
+    public void deletar(@PathVariable Integer id) {
         repository
                 .findById(id)
                 .map(autor -> {
@@ -50,7 +50,7 @@ public class AutorController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Integer id, @Valid @RequestBody Autor autorAtualizado){
+    public void atualizar(@PathVariable Integer id, @Valid @RequestBody Autor autorAtualizado) {
         repository
                 .findById(id)
                 .map(autor -> {

@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("api/editora")
+@RequestMapping("api/editoras")
 @CrossOrigin("http://localhost:4200")
 public class EditoraController {
 
