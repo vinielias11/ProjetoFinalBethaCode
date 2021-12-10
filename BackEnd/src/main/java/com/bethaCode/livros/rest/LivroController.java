@@ -53,6 +53,11 @@ public class LivroController {
         return livroRepository.save(livro);
     }
 
+    @GetMapping
+    public List<Livro> listarTodos() {
+        return livroRepository.findAll();
+    }
+
     @GetMapping("{id}")
     public Livro acharPorId(@PathVariable Integer id){
         return livroRepository

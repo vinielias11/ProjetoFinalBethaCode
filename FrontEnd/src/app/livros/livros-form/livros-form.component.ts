@@ -10,6 +10,8 @@ import { Livro } from '../livro';
 export class LivrosFormComponent implements OnInit {
 
   livro: Livro;
+  sucesso: boolean = false;
+  errosApi: String[];
 
   constructor( private service: LivrosService ) { 
     this.livro = new Livro();
@@ -20,11 +22,14 @@ export class LivrosFormComponent implements OnInit {
   }
 
   onClickSalvar() {
-    console.log(this.livro);
-    this.service
-      .salvar(this.livro)
+    this.service.salvar(this.livro)
       .subscribe(resp => {
-        console.log(resp);
+        this.sucesso = true;
+        this.errosApi = null;
+        this.livro = resp;
+      }, respErro => {
+        this.errosApi = respErro.error.erros;
+        this.sucesso = false;
       })
   }
 

@@ -2,9 +2,9 @@ export class Livro {
     id: number;
     titulo: string;
     numeroPaginas: number;
-    autor: number;
-    editora: number;
-    anoPublicacao: string;
+    idAutor: number;
+    idEditora: number;
+    anoPublicacao: number;
     genero: string;
     idioma: string;
 }
