@@ -17,4 +17,9 @@ public class Editora {
     @NotEmpty(message = "O campo nome é obrigatório.")
     @Column(nullable = false, length = 100)
     private String nome;
+
+    @NotEmpty(message = "O campo país é obrigatório.")
+    @Column(nullable = false, length = 30)
+    private String pais;
+
 }
