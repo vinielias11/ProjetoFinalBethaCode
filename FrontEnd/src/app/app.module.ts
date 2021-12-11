@@ -12,6 +12,7 @@ import { AutoresModule } from './autores/autores.module';
 
 import { LivrosService } from './livros.service';
 import { AutoresService } from './autores.service';
+import { EditorasModule } from './editoras/editoras.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AutoresService } from './autores.service';
     AppRoutingModule,
     TemplateModule,
     LivrosModule,
-    AutoresModule
+    AutoresModule,
+    EditorasModule
   ],
   providers: [
     LivrosService,

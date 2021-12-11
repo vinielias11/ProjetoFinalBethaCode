@@ -25,10 +25,14 @@ export class LivrosFormComponent implements OnInit {
 
     params.subscribe(urlParams => {
       this.id = urlParams['id'];
-
       if (this.id) {
-        this.service.getLivroPorId(this.id).subscribe(resp => this.livro = resp,
-                                                      erroResp => this.livro = new Livro());
+        this.service.getLivroPorId(this.id).subscribe(resp => {
+          this.livro = resp
+          console.log(resp);
+        }, erroResp => {
+          this.livro = new Livro()
+        });
+        
       }
 
     })

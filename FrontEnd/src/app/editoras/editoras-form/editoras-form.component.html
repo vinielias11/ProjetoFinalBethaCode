@@ -1,0 +1,74 @@
+<h1 class="mt-4">Editoras</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">{{ editora.id ? 'Edição' : 'Cadastro' }}</li>
+</ol>
+
+<div class="container float-left">
+    <form #livroForm="ngForm" (ngSubmit)="onClickSalvar()">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
+                    Editora salva/atualizada com sucesso!
+                </div>
+
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of errosApi">
+                    {{ erro }}
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Id:</label>
+                    <input type="text" class="form-control" disabled=true [(ngModel)]="editora.id" name="id">
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label>Nome:</label>
+                    <input type="text" class="form-control" [(ngModel)]="editora.nome" name="nome">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label>País:</label>
+                    <input type="text" class="form-control" [(ngModel)]="editora.pais" name="pais">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Ano de Fundação:</label>
+                    <input type="text" class="form-control" [(ngModel)]="editora.anoFundacao" name="anoFundacao">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <button type="button" class="btn btn-danger mr-1" >
+                    <i class="fa fa-arrow-alt-circle-left"></i>
+                    Voltar
+                </button>
+
+                <button type="submit" class="btn btn-success" *ngIf="!editora.id">
+                    <i class="fa fa-save"></i>
+                    Salvar
+                </button>
+
+                <button type="submit" class="btn btn-success" *ngIf="editora.id">
+                    <i class="fa fa-sync-alt"></i>
+                    Atualizar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

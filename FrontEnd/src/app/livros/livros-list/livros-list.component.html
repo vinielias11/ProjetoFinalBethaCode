@@ -48,6 +48,11 @@
                             <button class="btn btn-danger ml-2" (click)="preparaExclusao(livro)" data-toggle="modal" data-target="#modalSelecao">
                                 <i class="fa fa-trash"></i>
                             </button>
+                            
+                            <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#modalTest">
+                                <i class="fa fa-info"></i>
+                            </button>
+
                         </td>
                     </tr>
                 </tbody>
@@ -82,5 +87,18 @@
             </div>
         </div>
     </div>
+
+    <div id="modalTest" class="modal fade modal-xl modal-centered" role="dialog">
+        <div class="modal-dialog modal-xl modal-centered">
+            <div class="modal-content">
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal">Confirmar</button>
+                    <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     
 </div>

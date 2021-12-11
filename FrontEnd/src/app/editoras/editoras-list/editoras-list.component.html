@@ -1,4 +1,4 @@
-<h1 class="mt-4">Autores</h1>
+<h1 class="mt-4">Editoras</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Lista</li>
 </ol>
@@ -26,24 +26,24 @@
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>Nacionalidade</th>
-                        <th>Data de Nascimento</th>
+                        <th>País</th>
+                        <th>Ano de Fundação</th>
                         <th></th>
                     </tr>
                 </thead>
                 
                 <tbody>
-                    <tr *ngFor="let autor of autores">
-                        <td class="align-middle">{{ autor.id }}</td>
-                        <td class="align-middle">{{ autor.nome }}</td>
-                        <td class="align-middle">{{ autor.nacionalidade }}</td>
-                        <td class="align-middle">{{ autor.dataNascimento }}</td>
+                    <tr *ngFor="let editora of editoras">
+                        <td class="align-middle">{{ editora.id }}</td>
+                        <td class="align-middle">{{ editora.nome }}</td>
+                        <td class="align-middle">{{ editora.pais }}</td>
+                        <td class="align-middle">{{ editora.anoFundacao }}</td>
                         <td>
-                            <button class="btn btn-primary" routerLink="/autoresForm/{{ autor.id }}">
+                            <button class="btn btn-primary" routerLink="/editorasForm/{{ editora.id }}">
                                 <i class="fa fa-pen-square"></i>
                             </button>
 
-                            <button class="btn btn-danger ml-2" (click)="preparaExclusao(autor)" data-toggle="modal" data-target="#modalSelecao">
+                            <button class="btn btn-danger ml-2" (click)="preparaExclusao(editora)" data-toggle="modal" data-target="#modalSelecao">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </td>
@@ -68,12 +68,12 @@
                     <h4>Confirmação</h4>
                 </div>
 
-                <div class="modal-body" *ngIf="autorSelecionado">
-                    Confirma a exclusão do autor {{ autorSelecionado.nome }}?
+                <div class="modal-body" *ngIf="editoraSelecionada">
+                    Confirma a exclusão da editora {{ editoraSelecionada.nome }}?
                 </div>
 
                 <div class="modal-footer">
-                    <button class="btn btn-success" (click)="deletaAutor()" data-dismiss="modal">Confirmar</button>
+                    <button class="btn btn-success" (click)="deletaEditora()" data-dismiss="modal">Confirmar</button>
                     <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </div>
 

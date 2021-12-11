@@ -40,14 +40,16 @@
             <div class="col-md-7">
                 <div class="form-group">
                     <label>Autor:</label>
-                    <input type="text" class="form-control" [(ngModel)]="livro.idAutor" name="idAutor">
+                    <input type="text" class="form-control" *ngIf="!livro.id" [(ngModel)]="livro.idAutor" name="idAutor">
+                    <input type="text" class="form-control" *ngIf="livro.id" [(ngModel)]="livro.autor.id" name="livro.autor.id">
                 </div>
             </div>
 
             <div class="col-md-5">
                 <div class="form-group">
                     <label>Editora:</label>
-                    <input type="text" class="form-control" [(ngModel)]="livro.idEditora" name="idEditora">
+                    <input type="text" class="form-control" *ngIf="!livro.id"[(ngModel)]="livro.idEditora" name="idEditora">
+                    <input type="text" class="form-control" *ngIf="livro.id"[(ngModel)]="livro.editora.id" name="livro.editora.id">
                 </div>
             </div>
         </div>

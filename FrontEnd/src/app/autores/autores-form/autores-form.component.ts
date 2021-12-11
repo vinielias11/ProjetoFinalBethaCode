@@ -54,7 +54,7 @@ export class AutoresFormComponent implements OnInit {
     }
 
   onClickVoltar() {
-    this.router.navigate(['/autoresForm']);
+    this.router.navigate(['/autoresList']);
   }
 
 }
