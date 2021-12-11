@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/editoras")
@@ -33,6 +34,11 @@ public class EditoraController {
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                                             "Editora " +id+ " não cadastrada!"));
+    }
+
+    @GetMapping
+    public List<Editora> listarTodas() {
+        return repository.findAll();
     }
 
     @DeleteMapping("{id}")

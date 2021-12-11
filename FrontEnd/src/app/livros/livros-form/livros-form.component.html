@@ -40,16 +40,21 @@
             <div class="col-md-7">
                 <div class="form-group">
                     <label>Autor:</label>
-                    <input type="text" class="form-control" *ngIf="!livro.id" [(ngModel)]="livro.idAutor" name="idAutor">
-                    <input type="text" class="form-control" *ngIf="livro.id" [(ngModel)]="livro.autor.id" name="livro.autor.id">
+                    <select class="form-control" [(ngModel)]="livro.idAutor" name="idAutor">
+                        <option *ngFor="let autor of autoresCadastrados" [value]="autor.id">{{ autor.nome }}</option>
+                    </select>
+
+                    <!-- <input type="text" class="form-control" *ngIf="!livro.id" [(ngModel)]="livro.idAutor" name="idAutor"> -->
                 </div>
             </div>
 
             <div class="col-md-5">
                 <div class="form-group">
                     <label>Editora:</label>
-                    <input type="text" class="form-control" *ngIf="!livro.id"[(ngModel)]="livro.idEditora" name="idEditora">
-                    <input type="text" class="form-control" *ngIf="livro.id"[(ngModel)]="livro.editora.id" name="livro.editora.id">
+                    <select class="form-control" [(ngModel)]="livro.idEditora" name="idEditora">
+                        <option *ngFor="let editora of editorasCadastradas" [value]="editora.id">{{ editora.nome }}</option>
+                    </select>
+                    <!-- <input type="text" class="form-control" [(ngModel)]="livro.idEditora" name="idEditora"> -->
                 </div>
             </div>
         </div>
@@ -65,7 +70,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Número de Páginas:</label>
-                    <input type="text" class="form-control" [(ngModel)]="livro.numeroPaginas" name="numeroPaginas">
+                    <input type="number" class="form-control" [(ngModel)]="livro.numeroPaginas" name="numeroPaginas">
                 </div>
             </div>
 

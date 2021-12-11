@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AutoresService } from 'src/app/autores.service';
+import { Autor } from 'src/app/autores/autor';
+import { EditorasService } from 'src/app/editoras.service';
+import { Editora } from 'src/app/editoras/editora';
 import { LivrosService } from 'src/app/livros.service';
 import { Livro } from '../livro';
 
@@ -15,8 +19,11 @@ export class LivrosFormComponent implements OnInit {
   sucesso: boolean = false;
   errosApi: String[];
   id: number;
+  autoresCadastrados: Autor[] = [];
+  editorasCadastradas: Editora[] = [];
 
-  constructor( private service: LivrosService, private router: Router, private activatedRoute: ActivatedRoute ) { 
+  constructor( private service: LivrosService, private router: Router, private activatedRoute: ActivatedRoute, 
+               private serviceAutores: AutoresService, private serviceEditoras: EditorasService ) { 
     this.livro = new Livro();
   }
 
@@ -37,6 +44,29 @@ export class LivrosFormComponent implements OnInit {
 
     })
 
+    this.metodosForm();
+
+  }
+
+  metodosForm() {
+    this.getAutoresParaSelect();
+    this.getEditorasParaSelect();
+  }
+
+  getAutoresParaSelect() {
+    this.serviceAutores.listarAutores().subscribe(resp => {
+      resp.forEach(autor => {
+        this.autoresCadastrados.push(autor);
+      })
+    })
+  }
+
+  getEditorasParaSelect() {
+    this.serviceEditoras.listarEditoras().subscribe(resp => {
+      resp.forEach(editora => {
+        this.editorasCadastradas.push(editora);
+      })
+    })
   }
 
   onClickSalvar() {
