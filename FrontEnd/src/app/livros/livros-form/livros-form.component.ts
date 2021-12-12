@@ -75,7 +75,7 @@ export class LivrosFormComponent implements OnInit {
         this.sucesso = true;
         this.errosApi = null;
       }, error => {
-        this.errosApi = ['Erro ao atualizar o livro!'];
+        this.errosApi = ['Erro ao salvar o livro!'];
       })
 
     } else {
@@ -83,6 +83,7 @@ export class LivrosFormComponent implements OnInit {
           this.sucesso = true;
           this.errosApi = null;
           this.livro = resp;
+          this.atualizaPagina();
         }, respErro => {
           this.errosApi = respErro.error.erros;
           this.sucesso = false;
@@ -92,6 +93,13 @@ export class LivrosFormComponent implements OnInit {
 
   onClickVoltar() {
     this.router.navigate(['/livrosList']);
+  }
+
+  atualizaPagina() {
+    setTimeout(() => {
+      window.location.reload();
+      return false;
+    }, 1000);
   }
 
 }

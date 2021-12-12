@@ -41,7 +41,7 @@ export class LivrosListComponent implements OnInit {
     this.service.deletar(this.livroSelecionado).subscribe(success => {
       this.mensagemSucesso = 'Livro deletado com sucesso!';
       this.mensagemErro = null;
-      this.ngOnInit();
+      this.atualizaPagina();
     }, error => {
       this.mensagemErro = 'Ocorreu um erro ao deletar o livro!';
       this.mensagemSucesso = null;
@@ -61,6 +61,13 @@ export class LivrosListComponent implements OnInit {
       this.editoraDoLivro = resp;
     });
 
+  }
+
+  atualizaPagina() {
+    setTimeout(() => {
+      window.location.reload();
+      return false;
+    }, 500);
   }
 
 }
