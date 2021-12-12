@@ -3,7 +3,7 @@
     <li class="breadcrumb-item active">Lista</li>
 </ol>
 
-<div class="container float-left">
+<div>
 
     <div class="row">
         <div class="col-md-12">
@@ -13,56 +13,6 @@
             
             <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
                 {{ mensagemErro }}
-            </div>
-
-        </div>
-    </div>
-    
-    <div class="row mt-4">
-        <div class="col-md-12">
-            <table class="table table condensed table-hover">
-                
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Título</th>
-                        <th>N° de Páginas</th>
-                        <th>Gênero</th>
-                        <th>Idioma</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                
-                <tbody>
-                    <tr *ngFor="let livro of livros">
-                        <td class="align-middle">{{ livro.id }}</td>
-                        <td class="align-middle">{{ livro.titulo }}</td>
-                        <td class="align-middle">{{ livro.numeroPaginas }}</td>
-                        <td class="align-middle">{{ livro.genero }}</td>
-                        <td class="align-middle">{{ livro.idioma }}</td>
-                        <td>
-                            <button class="btn btn-primary" routerLink="/livrosForm/{{ livro.id }}">
-                                <i class="fa fa-pen-square"></i>
-                            </button>
-
-                            <button class="btn btn-danger ml-2" (click)="preparaExclusao(livro)" data-toggle="modal" data-target="#modalSelecao">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                            
-                            <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#modalTest">
-                                <i class="fa fa-info"></i>
-                            </button>
-
-                        </td>
-                    </tr>
-                </tbody>
-
-            </table>
-
-            <div class="row">
-                <button class="btn btn-success ml-3" (click)="onClickNovo()">
-                    <i class="fa fa-plus mr-1"></i>Novo
-                </button>
             </div>
 
         </div>
@@ -88,17 +38,166 @@
         </div>
     </div>
 
-    <div id="modalTest" class="modal fade modal-xl modal-centered" role="dialog">
-        <div class="modal-dialog modal-xl modal-centered">
-            <div class="modal-content">
-                <div class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal">Confirmar</button>
-                    <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+    <div class="modal fade" id="modalDetalhes" *ngIf="livroSelecionado">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+          
+            <div class="modal-header">
+              <h4 class="modal-title">Informações sobre o livro {{ livroSelecionado.titulo }}</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <h4>Gerais</h4>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Id:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="livroSelecionado.id" name="id">
+                        </div>
+                    </div>
+        
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <label>Título:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="livroSelecionado.titulo" name="titulo">
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Gênero:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="livroSelecionado.genero" name="genero">
+                        </div>
+                    </div>
+        
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Número de Páginas:</label>
+                            <input type="number" class="form-control" disabled=true [(ngModel)]="livroSelecionado.numeroPaginas" name="numeroPaginas">
+                        </div>
+                    </div>
+        
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Ano de Publicação:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="livroSelecionado.anoPublicacao" name="anoPublicacao">
+                        </div>
+                    </div>
+        
+                    <div class="col-md-3 mb-2">
+                        <div class="form-group">
+                            <label>Idioma:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="livroSelecionado.idioma" name="idioma">
+                        </div>
+                    </div>
                 </div>
 
-            </div>
-        </div>
-    </div>
+                <h4>Autor</h4>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Id:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="autorDoLivro.id" name="idAutor">
+                        </div>
+                    </div>
+        
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <label>Nome:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="autorDoLivro.nome" name="nomeAutor">
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <label>Nacionalidade:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="autorDoLivro.nacionalidade" name="nacionalidade">
+                        </div>
+                    </div>
+        
+                    <div class="col-md-3 mb-2">
+                        <div class="form-group">
+                            <label>Data de Nascimento:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="autorDoLivro.dataNascimento" name="dataNascimento">
+                        </div>
+                    </div>
+                </div>
 
+                <h4>Editora</h4>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Id:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="editoraDoLivro.id" name="idEditora">
+                        </div>
+                    </div>
+        
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <label>Nome:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="editoraDoLivro.nome" name="nomeEditora">
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <label>País:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="editoraDoLivro.pais" name="pais">
+                        </div>
+                    </div>
+        
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Ano de Fundação:</label>
+                            <input type="text" class="form-control" disabled=true [(ngModel)]="editoraDoLivro.anoFundacao" name="anoFundacao">
+                        </div>
+                    </div>
+                </div>
+            
+            <div class="modal-footer">
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+    
+</div>
+
+<div class="card-deck">
+    <div class="card border-dark" *ngFor="let livro of livros">
+        <div class="card-header">Id: {{livro.id}}</div>
+      <div class="card-body">
+            <h5 class="card-title">{{livro.titulo}}</h5>
+            <h6 class="card-text">Gênero: {{livro.genero}}</h6>
+            <h6 class="card-text">Idioma: {{livro.idioma}}</h6>
+            <h6 class="card-text">Ano de publicação: {{livro.anoPublicacao}}</h6>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary" routerLink="/livrosForm/{{ livro.id }}">
+            <i class="fa fa-pen-square"></i>
+        </button>
+
+        <button class="btn btn-primary ml-2" data-toggle="modal" (click)="getInfoParaDetalhar(livro)" data-target="#modalDetalhes">
+            <i class="fa fa-info-circle"></i>
+        </button>
+        
+        <a class="btn btn-primary ml-2"  target="_blank" href="https://www.amazon.com.br/s?k={{livro.titulo}}">
+            <i class="fab fa-amazon"></i>
+        </a>
+        
+        <button class="btn btn-danger ml-2" (click)="preparaExclusao(livro)" data-toggle="modal" data-target="#modalSelecao">
+            <i class="fa fa-trash"></i>
+        </button>
+      </div>
+    </div>
     
 </div>
