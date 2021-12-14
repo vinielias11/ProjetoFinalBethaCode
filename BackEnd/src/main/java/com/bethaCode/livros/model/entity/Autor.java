@@ -25,7 +25,8 @@ public class Autor {
     @Column(nullable = false, length = 100)
     private String nacionalidade;
 
-    @Column(name = "data_nascimento")
+    @NotEmpty(message = "O campo data de nascimento é obrigatório!")
+    @Column(nullable = false, name = "data_nascimento")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
 
