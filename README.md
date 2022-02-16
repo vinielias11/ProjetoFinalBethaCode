@@ -5,8 +5,6 @@ Repositório para o projeto final do curso Betha Code 2021.
 
 Para rodar pela primeira vez:
 
-Front > npm i.
+Front > npm i. ng serve --open
 
-ng serve --open
-
-Back > Dar reload nas dependências Maven.
+Back > Dar reload nas dependências Maven e rodar pelo Intelij.
